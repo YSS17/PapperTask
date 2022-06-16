@@ -31,6 +31,7 @@ gem "wysiwyg-rails"
 gem 'public_activity', '~> 1.5'
 gem 'pg'
 gem "figaro"
+gem 'net-smtp', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
