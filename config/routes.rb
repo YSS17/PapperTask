@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-
+  
   as :user do
     put '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
 
-  devise_for :users, controller: {
-    ragistrations: 'ragistrations',
-    confirmation: 'confirmations'
+   devise_for :users, controllers: {
+  	registrations: 'registrations',
+  	confirmations: 'confirmations'
   }
   
   root 'home#index'
