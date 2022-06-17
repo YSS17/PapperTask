@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :trackable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
+
 
   # new function to set the password without knowing the current
   # password used in our confirmation controller.
@@ -11,7 +11,7 @@ class User < ApplicationRecord
     p = {}
     p[:password] = params[:password]
     p[:password_confirmation] = params[:password_confirmation]
-    update_attributes(p)
+    update(p)
   end
 
   def password_match?
@@ -33,12 +33,12 @@ class User < ApplicationRecord
   end
 
   def password_required?
-    # Password is required if it is being set, but not for new records
-    if !persisted?
-      false
-    else
-      !password.nil? || !password_confirmation.nil?
-    end
+  # Password is required if it is being set, but not for new records
+  if !persisted?
+    false
+  else
+    !password.nil? || !password_confirmation.nil?
   end
-  
+end
+
 end
